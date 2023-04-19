@@ -70,7 +70,7 @@ router.post("/accounts", (req, res) => {
 	let bal = body.balance;
 	if (bal && typeof bal !== "number") {
 		bal = parseFloat(bal);
-		if (NaN(bal)) {
+		if (isNaN(bal)) {
 			res.status(400).json({
 				error: `Invalid balance value: ${body.balance}`,
 			});

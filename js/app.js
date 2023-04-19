@@ -33,5 +33,32 @@ function onLinkClick(event) {
 	navigate(event.target.href);
 }
 
+async function register() {
+	const registerForm = document.getElementById("registerForm");
+	const formData = new FormData(registerForm);
+	const data = Object.fromEntries(formData);
+	const jsonData = JSON.stringify(data);
+
+	const res = await createAccount(jsonData);
+
+	if (res.error) {
+		return console.error(res.error);
+	}
+	console.log("Account created!", res);
+}
+
+async function createAccount(account) {
+	try {
+		const resp = await fetch("//localhost:5000/api/accounts", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: account,
+		});
+		return await resp.json();
+	} catch (err) {
+		return { error: err.message || "Unknown Error" };
+	}
+}
+
 window.onpopstate = () => updateRoute();
 updateRoute();
