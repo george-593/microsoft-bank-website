@@ -13,7 +13,34 @@
 		<template id="login">
 			<h1>Bank App</h1>
 			<section>
-				<a href="/dashboard" onclick="onLinkClick(event)"> Login</a>
+				<h2>Login</h2>
+				<form
+					id="loginForm"
+					action="//localhost:5000/api/accounts"
+					method="GET"
+				>
+					<label for="username">Username</label>
+					<input id="username" name="username" type="text" />
+					<button>Login</button>
+				</form>
+				<hr />
+				<h2>Register</h2>
+				<form id="registerForm">
+					<label for="username">Username</label>
+					<input type="text" name="username" id="user" />
+					<label for="currency">Currency</label>
+					<input
+						type="text"
+						name="currency"
+						id="currency"
+						value="£"
+					/>
+					<label for="description">Description</label>
+					<input type="text" name="description" id="description" />
+					<label for="balance">Balance</label>
+					<input type="text" name="balance" id="balance" />
+					<button>Register</button>
+				</form>
 			</section>
 		</template>
 

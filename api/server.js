@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const crypto = require("crypto");
 const package = require("./package.json");
 
 const apiRoot = "/api";
@@ -156,17 +157,76 @@ router.get("/accounts/:username/transactions/:id", (req, res) => {
 	const user = req.params.username;
 	const id = req.params.id - 1;
 	const account = db[user];
+	const transaction = account.transactions[id];
 
 	// Send 404 if account not found
 	if (!account) {
 		res.status(404).json({ error: `No account found for user ${user}` });
 	}
 
-	return res.json(account.transactions[id]);
+	// Send 404 if ID is not a number
+	if (isNaN(id)) {
+		res.status(404).json({ error: `Invalid ID: ${req.params.id}` });
+	}
+
+	// Send 404 if ID is not a transaction
+	if (!transaction) {
+		res.status(404).json({ error: `Invalid ID: ${req.params.id}` });
+	}
+
+	return res.json(transaction);
 });
 
 // Create a new transaction
-router.post("/accounts/:username/transactions", (req, res) => {});
+router.post("/accounts/:username/transactions", (req, res) => {
+	const account = db[req.params.username];
+
+	// Check if account exists
+	if (!account) {
+		return res.status(404).json({ error: "User does not exist" });
+	}
+
+	// Check mandatory params
+	if (!req.body.object || !req.body.amount || !req.body.date) {
+		return res.status(400).json({ error: "Missing parameters" });
+	}
+
+	// Convert amount to number if needed
+	let amount = req.body.amount;
+	if (amount && typeof amount !== "number") {
+		amount = parseFloat(amount);
+	}
+
+	// Check that amount is a valid number
+	if (amount && isNaN(amount)) {
+		return res.status(400).json({ error: "Amount must be a number" });
+	}
+
+	// Generate ID
+	const id = crypto
+		.createHash("md5")
+		.update(req.body.date + req.body.object + req.body.amount)
+		.digest("hex");
+
+	// Check that transaction does not already exist
+	if (account.transactions.some((transaction) => transaction.id === id)) {
+		return res.status(409).json({ error: "Transaction already exists" });
+	}
+
+	// Add transaction
+	const transaction = {
+		id,
+		date: req.body.date,
+		object: req.body.amount,
+		amount,
+	};
+	account.transactions.push(transaction);
+
+	// Update balance
+	account.balance += transaction.amount;
+
+	return res.status(201).json(transaction);
+});
 
 app.use(apiRoot, router);
 
