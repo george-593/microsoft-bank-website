@@ -7,66 +7,74 @@
 		<title>Microsoft Bank Project</title>
 		<script src="/js/app.js" defer></script>
 		<link rel="stylesheet" href="/css/index.css" />
+		<link rel="stylesheet" href="/css/reset.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<div id="app">Loading...</div>
 
 		<template id="login">
-			<h1>Bank App</h1>
-			<section>
-				<h2>Login</h2>
-				<form id="loginForm" action="" method="">
-					<label for="username">Username</label>
-					<input id="username" name="username" type="text" />
-					<button>Login</button>
-				</form>
-				<p>
-					Don't have an account?
-					<a href="/register" onclick="onLinkClick(event)"
-						>Register Here!</a
-					>
-				</p>
-			</section>
+			<div class="login-holder">
+				<h1 id="login-title">Bank App</h1>
+				<div class="line"></div>
+				<section>
+					<h2 class="login-sub">Login</h2>
+					<form id="loginForm" action="" method="">
+						<label for="username" class="login-label">Username</label>
+						<input id="username" name="username" type="text" class="login-input" required autocomplete="off"/>
+						<button class="login-btn">Login</button>
+					</form>
+				</section>
+				<div class="login-or-line">
+					<div class="line"></div>
+					<p>OR</p>
+					<div class="line"></div>
+				</div>
+				<section>
+					<h2 class="login-sub">Register</h2>
+					<form id="registerForm" action="javascript:register()">
+						<label for="username" class="login-label">Username</label>
+						<input
+							type="text"
+							name="username"
+							id="user"
+							maxlength="20"
+							required
+							class="login-input"
+							autocomplete="off"
+						/>
+						<label for="currency" class="login-label">Currency</label>
+						<input
+							type="text"
+							name="currency"
+							id="currency"
+							value="£"
+							maxlength="5"
+							required
+							class="login-input"
+							autocomplete="off"
+						/>
+						<label for="description" class="login-label">Description</label>
+						<input
+							type="text"
+							name="description"
+							id="description"
+							maxlength="100"
+							class="login-input"
+							autocomplete="off"
+						/>
+						<label for="balance" class="login-label">Balance</label>
+						<input type="text" name="balance" id="balance" class="login-input" autocomplete="off"/>
+						<button class="login-btn">Register</button>
+					</form>
+				</section>
+				</section>
+			</div>
 		</template>
 
-		<template id="register">
-			<h2>Register</h2>
-			<form id="registerForm" action="javascript:register()">
-				<label for="username">Username</label>
-				<input
-					type="text"
-					name="username"
-					id="user"
-					maxlength="20"
-					required
-				/>
-				<label for="currency">Currency</label>
-				<input
-					type="text"
-					name="currency"
-					id="currency"
-					value="£"
-					maxlength="5"
-					required
-				/>
-				<label for="description">Description</label>
-				<input
-					type="text"
-					name="description"
-					id="description"
-					maxlength="100"
-				/>
-				<label for="balance">Balance</label>
-				<input type="text" name="balance" id="balance" />
-				<button>Register</button>
-				<p>
-					Already have an account?
-					<a href="/login" onclick="onLinkClick(event)"
-						>Login Here!</a
-					>
-				</p>
-			</form>
-		</template>
+		<template id="register"> </template>
 
 		<template id="dashboard">
 			<header>
