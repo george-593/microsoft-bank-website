@@ -20,38 +20,52 @@
 					<input id="username" name="username" type="text" />
 					<button>Login</button>
 				</form>
-				<hr />
-				<h2>Register</h2>
-				<form id="registerForm" action="javascript:register()">
-					<label for="username">Username</label>
-					<input
-						type="text"
-						name="username"
-						id="user"
-						maxlength="20"
-						required
-					/>
-					<label for="currency">Currency</label>
-					<input
-						type="text"
-						name="currency"
-						id="currency"
-						value="£"
-						maxlength="5"
-						required
-					/>
-					<label for="description">Description</label>
-					<input
-						type="text"
-						name="description"
-						id="description"
-						maxlength="100"
-					/>
-					<label for="balance">Balance</label>
-					<input type="text" name="balance" id="balance" />
-					<button>Register</button>
-				</form>
+				<p>
+					Don't have an account?
+					<a href="/register" onclick="onLinkClick(event)"
+						>Register Here!</a
+					>
+				</p>
 			</section>
+		</template>
+
+		<template id="register">
+			<h2>Register</h2>
+			<form id="registerForm" action="javascript:register()">
+				<label for="username">Username</label>
+				<input
+					type="text"
+					name="username"
+					id="user"
+					maxlength="20"
+					required
+				/>
+				<label for="currency">Currency</label>
+				<input
+					type="text"
+					name="currency"
+					id="currency"
+					value="£"
+					maxlength="5"
+					required
+				/>
+				<label for="description">Description</label>
+				<input
+					type="text"
+					name="description"
+					id="description"
+					maxlength="100"
+				/>
+				<label for="balance">Balance</label>
+				<input type="text" name="balance" id="balance" />
+				<button>Register</button>
+				<p>
+					Already have an account?
+					<a href="/login" onclick="onLinkClick(event)"
+						>Login Here!</a
+					>
+				</p>
+			</form>
 		</template>
 
 		<template id="dashboard">
