@@ -16,14 +16,14 @@
 		<div id="app">Loading...</div>
 
 		<template id="login">
-			<div class="login-holder">
+			<div id="login-holder">
 				<h1 id="login-title">Bank App</h1>
 				<div class="line"></div>
 				<section>
 					<h2 class="login-sub">Login</h2>
-					<form id="loginForm" action="" method="">
+					<form id="loginForm" action="javascript:login()">
 						<label for="username" class="login-label">Username</label>
-						<input id="username" name="username" type="text" class="login-input" required autocomplete="off"/>
+						<input id="username" name="username" type="text" class="login-input" autocomplete="off"/>
 						<button class="login-btn">Login</button>
 					</form>
 				</section>
@@ -77,23 +77,28 @@
 		<template id="register"> </template>
 
 		<template id="dashboard">
-			<header>
-				<h1>Bank App</h1>
-				<a href="/login" onclick="onLinkClick(event)">Logout</a>
-			</header>
-			<section>Balance: £100</section>
-			<section>
-				<h2>Transactions</h2>
-				<table>
-					<thead>
-						<tr>
-							<th>Date</th>
-							<th>Object</th>
-							<th>Amount</th>
-						</tr>
-					</thead>
-				</table>
-			</section>
+			<div id="dashboard-holder">
+				<header id="dashboard-header">
+					<h1 id="dashboard-title">Bank App</h1>
+					<a href="/login" onclick="onLinkClick(event)" id="dashboard-logout">Logout</a>
+				</header>
+				<section id="dashbaord-welcome">
+					<h2 class="dashboard-sub">Welcome: <div id="data-username">Account Holder</p></h2>
+					Balance: £100
+				</section>
+				<section>
+					<h2>Transactions</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Object</th>
+								<th>Amount</th>
+							</tr>
+						</thead>
+					</table>
+				</section>
+			</div>
 		</template>
 	</body>
 </html>

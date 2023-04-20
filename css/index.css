@@ -2,10 +2,17 @@
 	height: 100vh;
 	width: 100vw;
 	padding-top: 5vh;
-	background-color: #2980b9;
+	background-image: linear-gradient(
+		to top,
+		#3498db,
+		#3192d2,
+		#2e8cca,
+		#2c86c1,
+		#2980b9
+	);
 }
 
-.login-holder {
+#login-holder {
 	width: 70%;
 	margin: auto;
 	background-color: #ecf0f1;
@@ -81,14 +88,53 @@
 	padding: 0 10px;
 }
 
+#dashboard-holder {
+	width: 80%;
+	margin: auto;
+	background-color: #ecf0f1;
+	padding: 20px;
+	border-radius: 12px;
+}
+
+#dashboard-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+#dashboard-title {
+	color: #34495e;
+	font-weight: bold;
+	font-family: "Roboto", sans-serif;
+	font-size: 3rem;
+}
+
+#dashboard-logout {
+	color: black;
+	text-decoration: none;
+}
+
+#dashboard-welcome {
+	display: flex;
+}
+
+#data-username {
+	display: inline-block;
+}
+
 @media only screen and (max-width: 600px) {
 	.login-holder {
 		width: 98%;
 	}
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 900px) and (min-width: 601px) {
 	.login-holder {
-		width: 85%;
+		width: 90%;
+	}
+}
+
+@media only screen and (max-width: 1100px) and (min-width: 901px) {
+	.login-holder {
+		width: 80%;
 	}
 }

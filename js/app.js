@@ -61,5 +61,9 @@ async function createAccount(account) {
 	}
 }
 
+function login() {
+	navigate("/dashboard");
+}
+
 window.onpopstate = () => updateRoute();
 updateRoute();
