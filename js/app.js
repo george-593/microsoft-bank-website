@@ -56,6 +56,9 @@ async function getAccount() {
 
 	const username = localStorage.getItem("username");
 
+	if (!username) {
+		return null;
+	}
 	const account = await sendRequest(
 		`accounts/${encodeURIComponent(username)}`
 	);
