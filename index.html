@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="/css/reset.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<div id="app">Loading...</div>
@@ -76,15 +76,14 @@
 		<template id="dashboard">
 			<div id="dashboard-holder">
 				<header id="dashboard-header">
-					<h1 id="dashboard-title">Bank App</h1>
+					<h1 id="dashboard-title">Welcome, <span id="username"></span></h2>
 					<a href="/login" onclick="onLinkClick(event)" id="dashboard-logout">Logout</a>
 				</header>
 				<div class="line"></div>
-				<section id="dashbaord-welcome">
-					<h2 class="dashboard-sub" id="dashboard-name">Welcome: <span id="username"></span></h2>
-					<div id="dasboard-bal">Balance: <span id="currency"></span><span id="balance"></span></div>
+				<section id="dashbaord-data">
+					<div class="dashboard-h3">Balance: <span id="currency"></span><span id="balance"></span></div>
+					<p id="description"></p>
 				</section>
-				<h2 id="description"></h2>
 				<div class="line"></div>
 				<section>
 					<h2>Transactions</h2>

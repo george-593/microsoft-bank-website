@@ -106,6 +106,7 @@
 #dashboard-header {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 #dashboard-title {
@@ -121,14 +122,6 @@
 	font-family: "Roboto", sans-serif;
 	font-weight: bold;
 	font-size: 1.3rem;
-}
-
-#dashboard-welcome {
-	display: flex;
-}
-
-#data-username {
-	display: inline-block;
 }
 
 #table {
@@ -162,6 +155,22 @@
 
 #table tbody tr:last-of-type {
 	border-bottom: 4px solid #3498db;
+}
+
+.dashboard-h3 {
+	color: #2c3e50;
+	font-family: "Roboto", sans-serif;
+	font-size: 1.8rem;
+}
+
+#username {
+	text-transform: capitalize;
+}
+
+#description {
+	font-size: 1.2rem;
+	font-family: "Roboto", sans-serif;
+	color: #2c3e50;
 }
 
 @media only screen and (max-width: 600px) {
