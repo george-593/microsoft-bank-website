@@ -165,22 +165,22 @@
 }
 
 @media only screen and (max-width: 600px) {
-	.login-holder,
-	.dashboard-holder {
+	#login-holder,
+	#dashboard-holder {
 		width: 98%;
 	}
 }
 
 @media only screen and (max-width: 900px) and (min-width: 601px) {
-	.login-holder,
-	.dashboard-holder {
+	#login-holder,
+	#dashboard-holder {
 		width: 90%;
 	}
 }
 
 @media only screen and (max-width: 1100px) and (min-width: 901px) {
-	.login-holder,
-	.dashboard-holder {
+	#login-holder,
+	#dashboard-holder {
 		width: 80%;
 	}
 }
