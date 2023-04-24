@@ -48,12 +48,6 @@ function createTransactionRow(transaction) {
 }
 
 async function getAccount() {
-	// Clear if on login screen
-	if (window.location.pathname === "/login") {
-		localStorage.removeItem("username");
-		return null;
-	}
-
 	const username = localStorage.getItem("username");
 
 	if (!username) {
@@ -77,7 +71,18 @@ function updateRoute() {
 	const route = routes[path];
 	// If the path is not defined, redirect to login
 	if (!route) {
+		// If the user is logged in, redirect to dashboard
+		let account = getAccount();
+		if (account) {
+			return navigate("/dashboard");
+		}
+
 		return navigate("/login");
+	}
+
+	// Clear account cache if on login page
+	if (window.location.pathname === "/login") {
+		localStorage.removeItem("username");
 	}
 
 	// Render the view
