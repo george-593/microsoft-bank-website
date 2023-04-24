@@ -17,10 +17,10 @@ app.options("*", cors());
 // Simple DB
 const db = {
 	george: {
-		username: "george",
+		username: "test",
 		currency: "GBP",
 		balance: 1000,
-		description: "demo account",
+		description: "test account",
 		transactions: [
 			{ id: "1", date: "2020-10-01", object: "Pocket money", amount: 50 },
 			{ id: "2", date: "2020-10-03", object: "Book", amount: -10 },
