@@ -16,7 +16,7 @@ app.options("*", cors());
 
 // Simple DB
 const db = {
-	george: {
+	test: {
 		username: "test",
 		currency: "GBP",
 		balance: 1000,

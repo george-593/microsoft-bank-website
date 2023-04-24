@@ -86,11 +86,10 @@
 				</header>
 				<div class="line"></div>
 				<section id="dashbaord-welcome">
-					<h2 class="dashboard-sub" id="dashboard-name">Welcome: name</h2>
-					<div id="dasboard-bal">Balance: bal</div>
-					<div id="dashboard-cur">Currency: cur</div>
-					<div id="dashboard-desc">Description: desc</div>
+					<h2 class="dashboard-sub" id="dashboard-name">Welcome: <span id="username"></span></h2>
+					<div id="dasboard-bal">Balance: <span id="currency"></span> <span id="balance"></span></div>
 				</section>
+				<h2 id="description"></h2>
 				<div class="line"></div>
 				<section>
 					<h2>Transactions</h2>
@@ -102,9 +101,18 @@
 								<th>Amount</th>
 							</tr>
 						</thead>
+						<tbody id="transactions"></tbody>
 					</table>
 				</section>
 			</div>
+		</template>
+
+		<template id="transaction">
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
 		</template>
 	</body>
 </html>
