@@ -23,7 +23,8 @@
 					<h2 class="login-sub">Login</h2>
 					<form id="loginForm" action="javascript:login()">
 						<label for="username" class="login-label">Username</label>
-						<input id="username" name="username" type="text" class="login-input" autocomplete="off"/>
+						<input id="username" name="username" type="text" class="login-input" autocomplete="off" required/>
+						<div id="loginError" role="alert" class="error-msg"></div>
 						<button class="login-btn">Login</button>
 					</form>
 				</section>
@@ -67,6 +68,7 @@
 						/>
 						<label for="balance" class="login-label">Balance</label>
 						<input type="text" name="balance" id="balance" class="login-input" autocomplete="off"/>
+						<div id="registerError" role="alert" class="error-msg"></div>
 						<button class="login-btn">Register</button>
 					</form>
 				</section>
@@ -82,10 +84,14 @@
 					<h1 id="dashboard-title">Bank App</h1>
 					<a href="/login" onclick="onLinkClick(event)" id="dashboard-logout">Logout</a>
 				</header>
+				<div class="line"></div>
 				<section id="dashbaord-welcome">
-					<h2 class="dashboard-sub">Welcome: <div id="data-username">Account Holder</p></h2>
-					Balance: £100
+					<h2 class="dashboard-sub" id="dashboard-name">Welcome: name</h2>
+					<div id="dasboard-bal">Balance: bal</div>
+					<div id="dashboard-cur">Currency: cur</div>
+					<div id="dashboard-desc">Description: desc</div>
 				</section>
+				<div class="line"></div>
 				<section>
 					<h2>Transactions</h2>
 					<table>

@@ -4,6 +4,10 @@ const routes = {
 	"/register": { templateId: "register", title: "Register" },
 };
 
+const BASE_URL = "//localhost:5000";
+
+let account = null;
+
 function updateRoute() {
 	// Get the current path
 	const path = window.location.pathname;
@@ -43,14 +47,17 @@ async function register() {
 	const res = await createAccount(jsonData);
 
 	if (res.error) {
-		return console.error(res.error);
+		return updateElement("registerError", res.error);
 	}
 	console.log("Account created!", res);
+
+	account = res;
+	navigate("/dashboard");
 }
 
 async function createAccount(account) {
 	try {
-		const resp = await fetch("//localhost:5000/api/accounts", {
+		const resp = await fetch(`${BASE_URL}/api/accounts`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: account,
@@ -61,8 +68,33 @@ async function createAccount(account) {
 	}
 }
 
-function login() {
+async function login() {
+	const loginForm = document.getElementById("loginForm");
+	const user = loginForm.username.value;
+	const data = await getAccount(user);
+
+	if (data.error) {
+		return updateElement("loginError", data.error);
+	}
+
+	account = data;
 	navigate("/dashboard");
+}
+
+async function getAccount(account) {
+	try {
+		const response = await fetch(
+			`${BASE_URL}/api/accounts/${encodeURIComponent(account)}`
+		);
+		return await response.json();
+	} catch (err) {
+		return { error: err.message || "Unknown Error" };
+	}
+}
+
+function updateElement(id, text) {
+	const element = document.getElementById(id);
+	element.textContent = text;
 }
 
 window.onpopstate = () => updateRoute();
