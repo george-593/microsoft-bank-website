@@ -5,12 +5,9 @@ const routes = {
 		title: "Dashboard",
 		init: updateDashboard,
 	},
-	"/register": { templateId: "register", title: "Register" },
 };
 
 const BASE_URL = "//localhost:5000";
-
-let account = null;
 
 // Helper Functions
 
@@ -26,7 +23,6 @@ function updateElement(id, textOrNode) {
 }
 
 async function sendRequest(endpoint, method = "GET", body = null) {
-	console.log(endpoint, method, body);
 	try {
 		const resp = await fetch(`${BASE_URL}/api/${endpoint}`, {
 			method: method,
@@ -49,6 +45,25 @@ function createTransactionRow(transaction) {
 	tr.children[2].textContent = transaction.amount.toFixed(2);
 
 	return transactionRow;
+}
+
+async function getAccount() {
+	// Clear if on login screen
+	if (window.location.pathname === "/login") {
+		localStorage.removeItem("username");
+		return null;
+	}
+
+	const username = localStorage.getItem("username");
+
+	const account = await sendRequest(
+		`accounts/${encodeURIComponent(username)}`
+	);
+	return account;
+}
+
+function setAccount(username) {
+	localStorage.setItem("username", username);
 }
 
 // Other Functions
@@ -95,7 +110,7 @@ async function register() {
 	}
 	console.log("Account created!", res);
 
-	account = res;
+	setAccount(res.username);
 	navigate("/dashboard");
 }
 
@@ -107,12 +122,12 @@ async function login() {
 	if (data.error) {
 		return updateElement("loginError", data.error);
 	}
-
-	account = data;
+	setAccount(data.username);
 	navigate("/dashboard");
 }
 
-function updateDashboard() {
+async function updateDashboard() {
+	const account = await getAccount();
 	if (!account) {
 		return navigate("/login");
 	}
