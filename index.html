@@ -47,7 +47,7 @@
 							autocomplete="off"
 						/>
 						<label for="currency" class="login-label">Currency</label>
-						<input
+						<!--<input
 							type="text"
 							name="currency"
 							id="currency"
@@ -56,7 +56,12 @@
 							required
 							class="login-input"
 							autocomplete="off"
-						/>
+						/>-->
+						<select name="currency" id="currency" class="login-input" required>
+							<option value="£">£</option>
+							<option value="$">$</option>
+							<option value="$€">€</option>
+						</select>
 						<label for="description" class="login-label">Description</label>
 						<input
 							type="text"
@@ -87,7 +92,7 @@
 				<div class="line"></div>
 				<section id="dashbaord-welcome">
 					<h2 class="dashboard-sub" id="dashboard-name">Welcome: <span id="username"></span></h2>
-					<div id="dasboard-bal">Balance: <span id="currency"></span> <span id="balance"></span></div>
+					<div id="dasboard-bal">Balance: <span id="currency"></span><span id="balance"></span></div>
 				</section>
 				<h2 id="description"></h2>
 				<div class="line"></div>
