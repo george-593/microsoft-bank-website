@@ -35,14 +35,14 @@ async function sendRequest(endpoint, method = "GET", body = null) {
 	}
 }
 
-function createTransactionRow(transaction) {
+function createTransactionRow(transaction, currency) {
 	const template = document.getElementById("transaction");
 	const transactionRow = template.content.cloneNode(true);
 	const tr = transactionRow.querySelector("tr");
 
 	tr.children[0].textContent = transaction.date;
 	tr.children[1].textContent = transaction.object;
-	tr.children[2].textContent = transaction.amount.toFixed(2);
+	tr.children[2].textContent = currency + transaction.amount.toFixed(2);
 
 	return transactionRow;
 }
@@ -147,7 +147,10 @@ async function updateDashboard() {
 
 	const transactionsRows = document.createDocumentFragment();
 	for (const transaction of account.transactions) {
-		const transactionRow = createTransactionRow(transaction);
+		const transactionRow = createTransactionRow(
+			transaction,
+			account.currency
+		);
 		transactionsRows.appendChild(transactionRow);
 	}
 	updateElement("transactions", transactionsRows);

@@ -163,7 +163,7 @@
 	font-size: 1.8rem;
 }
 
-#username {
+#dashboard-title > #username {
 	text-transform: capitalize;
 }
 
