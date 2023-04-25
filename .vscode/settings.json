@@ -1,5 +1,7 @@
 {
-	"appService.zipIgnorePattern": ["node_modules{,/**}", ".vscode{,/**}"],
-	"appService.defaultWebAppToDeploy": "/subscriptions/6989c2af-a266-45ed-b067-b08bae0df2e2/resourceGroups/ms-bank-website_group-b3b7/providers/Microsoft.Web/sites/ms-bank-website",
-	"appService.deploySubpath": "api"
+	"appService.zipIgnorePattern": [
+		"node_modules{,/**}",
+		".vscode{,/**}",
+		"api/logs{,/**}"
+	],
 }
