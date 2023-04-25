@@ -7,7 +7,7 @@ const routes = {
 	},
 };
 
-const BASE_URL = "";
+const BASE_URL = "ms-bank-website.azurewebsites.net/api";
 
 // Helper Functions
 
