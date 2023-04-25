@@ -7,7 +7,7 @@ const routes = {
 	},
 };
 
-const BASE_URL = "//localhost:5000";
+const BASE_URL = "";
 
 // Helper Functions
 
