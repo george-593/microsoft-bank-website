@@ -12,7 +12,10 @@ const app = express();
 // configure
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors({ origin: /http:\/\/localhost/ }));
+//app.use(cors({ origin: /http:\/\/localhost/ }));
+app.use(
+	cors({ origin: "https://yellow-ground-037e8fa03.3.azurestaticapps.net" })
+);
 app.options("*", cors());
 
 // Winston Logger
