@@ -1,14 +1,17 @@
+http://localhost:5000/api/
+###
+
 http://localhost:5000/api/accounts/test
 ###
 
 http://localhost:5000/api/accounts/steve
 
 ###
-POSThttp://localhost:5000/api/accounts HTTP/1.1
+POST http://localhost:5000/api/accounts HTTP/1.1
 content-type: application/json
 
 {
-    "username": "george",
+    "username": "test1",
     "currency": "GBP",
     "balance": 1000
 }
